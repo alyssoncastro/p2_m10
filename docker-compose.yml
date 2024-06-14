@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: ./app
+    container_name: app
+    ports:
+      - "8000:8000"
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile.nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app
